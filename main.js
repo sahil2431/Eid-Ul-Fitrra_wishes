@@ -4,13 +4,15 @@ const app = express()
 const mongoose = require('mongoose');
 const path = require('path');
 const quotes = require("./models/quotes")
-const db = "mongodb+srv://user4526:8XePBzKJFRNbsPMA@project.gmdhkrn.mongodb.net/myProjec?retryWrites=true&w=majority&appName=Project"
+const dotenv = require("dotenv")
+dotenv.config()
+const db = `${process.env.MONGO_DB_URI}${process.env.MONGO_DB_NAME}`
 conn = mongoose.connect(db).then(()=>{
   console.log("Connection Successfull")
 }).catch((err)=>{
   console.log("no Connnection" , err)
 });
-const port = 3000
+const port = process.env.PORT
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));

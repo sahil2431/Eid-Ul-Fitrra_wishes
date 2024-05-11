@@ -42,7 +42,7 @@ body {
   top: 10vh;
   left: 25vw;
   width: 50vw;
-
+  height: 80vh;
   overflow: hidden;
 
 }
@@ -112,6 +112,32 @@ p {
   align-items: center;
   width: 580px;
   height: 35vh;
+  position: absolute;
+  bottom: 0;
+}
+
+.copy {
+  position: absolute;
+  left: 540px;
+  top: 15px;
+  cursor: pointer;
+  display: none;
+  animation: copiedAnimation 0.5s ease-in-out ;
+
+}
+@keyframes copiedAnimation {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
 }
 
 button {

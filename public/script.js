@@ -1,6 +1,8 @@
 
+let copy = document.querySelector(".copy")
 async function main() {
   document.querySelector(".button").addEventListener('click', async () => {
+    copy.src = 'copy.svg';
 
     quote.classList.add("rotatedBefore");
     let q
@@ -27,9 +29,21 @@ async function main() {
       }, 300);
     });
     quote.classList.remove("hidden");
-
+    copy.style.display = "block" 
     quote.classList.add("quote")
   })
+
+  copy.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(quote.innerText);
+      copy.src = "copied.svg";
+      setTimeout(() => {
+        copy.src = 'copy.svg';
+      }, 2000); // Reset the icon after 2 seconds
+    } catch (error) {
+      alert("Failed to copy quote to clipboard:", error);
+    }
+  });
 }
 
 main()
